@@ -1,0 +1,9 @@
+@tailwind utilities;
+
+.content{
+	contain: content;
+}
+
+.layout{
+	contain: layout;
+}

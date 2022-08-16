@@ -1,0 +1,158 @@
+.typo{
+    font: 300 16px/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+.typo *{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s
+}
+
+.typo a {
+  color: #2563eb;
+}
+
+.typo a:hover{
+  text-decoration: underline;
+}
+
+html[class='dark'] .typo a {
+  color: #3b82f6;
+}
+
+.typo b,.typo strong {
+  font-weight: 700;
+}
+
+/* 保证块/段落之间的空白隔行 */
+.typo p,.typo pre,.typo ul,.typo ol,.typo hr,.typo blockquote {
+  margin-bottom: 1.2em
+}
+
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6{
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+
+.typo h1{
+  font-size: 1.8em;
+}
+
+.typo h2{
+  font-size: 1.6em;
+}
+
+.typo h3{
+  font-size: 1.4em;
+}
+
+.typo h4{
+  font-size: 1.2em;
+}
+
+.typo h5, .typo h6{
+  font-size: 1em;
+}
+
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.typo ul{
+  margin-left: 1.3em;
+  list-style: disc;
+}
+
+.typo ol{
+  list-style: decimal;
+  margin-left: 1.9em;
+}
+
+.typo li ul, .typo li ol{
+  margin-bottom: 0.8em;
+  margin-left: 2em;
+}
+
+.typo li ul{
+  list-style: circle;
+}
+
+.typo em{
+  font-weight: inherit;
+}
+
+
+/* Responsive images */
+.typo img {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+.typo blockquote {
+  border-left-width: 3px;
+  padding-left: 1em;
+  margin: 1em;
+}
+
+.typo code{
+  color: #e91e63;
+  word-wrap: break-word;
+  font-size: .9em;
+}
+
+.typo code:before,.typo code:after{
+  content: "`";
+}
+
+.typo pre code:before,.typo pre code:after{
+  content: none;
+}
+
+.typo pre code {
+  padding: 1em;
+  display: block;
+  overflow: auto;
+  border-width: 1px;
+  color: inherit;
+}
+
+.typo nav{
+  max-height: 20em;
+  overflow: auto;
+}
+
+.typo nav>ol:empty{
+  display: none;
+}
+
+.typo nav>ol:before{
+  content: "目录";
+  display: block;
+  font-size: 1.5em;
+  margin-left: calc(1.9 / 1.5 * -1em);
+  text-align: center;
+}
+
+.typo h1:target::before, .typo h2:target::before, .typo h3:target::before {
+  content: "";
+  display: block;
+  height: calc(2rem + 1.75rem);
+  margin-top: calc(-2rem - 1.75rem);
+}
+
+@media (min-width: 1280px) {  
+  .typo nav>ol{
+    position: fixed;
+    word-break: break-all;
+    padding-left: 1.9em;
+    margin: 0;
+    display: inline-block;
+    bottom: 0;
+    right: 0;
+    top: calc(2rem + 1.75rem);
+    width: 15em;
+    overflow: auto;
+    max-height: none;
+    border-left-width: 1px;
+  }
+}
