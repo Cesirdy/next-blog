@@ -17,20 +17,17 @@ export default function Content({ children }) {
 	        {...props}
 	        placeholder="blur"
 	        blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-	        layout="intrinsic"
 	      />
 	    ),
         a({ node, children, ...props }){
           const match = /#/.exec(props.href || '')
           return !match ? (
-            <Link href={props.href} prefetch={false}>
-              <a
-                target={
-                  props.href?.includes("http") ? "_blank" : "_self"
-                }
-              >
-                {children}
-              </a>
+            <Link href={props.href} prefetch={false}
+              target={
+                props.href?.includes("http") ? "_blank" : "_self"
+              }
+            >
+              {children}
             </Link>
           ) : (
             <a {...props}>{children}</a>

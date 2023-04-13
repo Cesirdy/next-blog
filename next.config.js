@@ -33,9 +33,9 @@ module.exports = withBundleAnalyzer({
     }],
     links: [{ //友链
         name: "名称",
-        url: "https://链接",
-        img: "https://头像",
-        text: "介绍"
+        url: "https://github.com/Cesirdy/next-blog",
+        img: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",
+        text: "示例"
       }],
   }
 })

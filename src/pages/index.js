@@ -24,8 +24,8 @@ export default function Home({ allPostsData }) {
         <ul className='divide-y'>
           {allPostsData.map(({ id, date, title, categories, excerpt }) => (
           <li className='py-6' key={id}>
-            <Link href={`/posts/${id}`} prefetch={false}>
-              <a className='block text-2xl hover:text-blue-600 dark:hover:text-blue-500 transition-all'>{title}</a>
+            <Link href={`/posts/${id}`} prefetch={false} className='block text-2xl hover:text-blue-600 dark:hover:text-blue-500 transition-all'>
+              {title}
             </Link>
             <div className='py-6'>
               {excerpt}
@@ -38,7 +38,7 @@ export default function Home({ allPostsData }) {
           ))}
           <li className='text-center text-neutral-500 dark:text-neutral-400 py-6 text-xl'>
             <Link href={'/pages/archives'}>
-              <a>查看所有文章</a>
+              查看所有文章
             </Link>
           </li>
         </ul>

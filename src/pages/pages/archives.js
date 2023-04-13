@@ -24,8 +24,8 @@ export default function Archive({ allPostsData }) {
         <ul className='py-6 space-y-2 lg:text-lg'>
           {allPostsData.map(({ id, date, title, tags, categories }) => (
           <li className='flex flex-col lg:flex-row place-content-between' key={id}>
-            <Link href={`/posts/${id}`} prefetch={false}>
-              <a className='hover:text-blue-600 dark:hover:text-blue-500 transition-all'>{title}</a>
+            <Link href={`/posts/${id}`} prefetch={false} className='hover:text-blue-600 dark:hover:text-blue-500 transition-all'>
+              {title}
             </Link>
             <small className='space-x-2 text-neutral-500 dark:text-neutral-400'>
               <Date dateString={date} />
