@@ -20,7 +20,7 @@ export function getSortedPostsData() {
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents,{ excerpt: true });
     const excerptMD = matterResult.excerpt;
-    const excerpt = removeMd(excerptMD)
+    const excerpt = removeMd(excerptMD).replace(/[\r\n]/g, "")
 
     // Combine the data with the id
     return {
@@ -69,13 +69,16 @@ export async function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
+  const matterResult = matter(fileContents,{ excerpt: true });
   const content = matterResult.content;
+  const excerptMD = matterResult.excerpt;
+  const excerpt = removeMd(excerptMD).replace(/[\r\n]/g, "")
 
   // Combine the data with the id and contentHtml
   return {
     id,
     content,
+    excerpt,
     ...matterResult.data,
   };
 }

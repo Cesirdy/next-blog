@@ -8,6 +8,10 @@ export default function Link() {
     <Layout>
       <Head>
         <title>{`链接 - ${process.env.name}`}</title>
+        <meta
+          name="description"
+          content={process.env.description}
+        />
       </Head>
         <p className='text-lg text-neutral-500 dark:text-neutral-400'>前有朋友。</p>
         <ul className='flex flex-wrap py-6'>

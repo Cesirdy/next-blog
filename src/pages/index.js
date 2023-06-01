@@ -19,12 +19,16 @@ export default function Home({ allPostsData }) {
       {/* Keep the existing code here */}
       <Head>
         <title>{process.env.name}</title>
+        <meta
+          name="description"
+          content={process.env.description}
+        />
       </Head>
       {/* Add this <section> tag below the existing <section> tag */}
         <ul className='divide-y'>
           {allPostsData.map(({ id, date, title, categories, excerpt }) => (
           <li className='py-6' key={id}>
-            <Link href={`/posts/${id}`} prefetch={false} className='block text-2xl hover:text-blue-600 dark:hover:text-blue-500 transition-all'>
+            <Link href={`/posts/${id}`} className='block text-2xl hover:text-blue-600 dark:hover:text-blue-500 transition-all'>
               {title}
             </Link>
             <div className='py-6'>

@@ -26,6 +26,10 @@ date: "${time}"
 categories:
   - 
 ---
+
+here
+
+---
 `
 
   fs.writeFile(`./src/sources/posts/${title}.md`, frontMatter, (err) => {

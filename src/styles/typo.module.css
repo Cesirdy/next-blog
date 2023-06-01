@@ -1,5 +1,6 @@
 .typo{
-    font: 300 16px/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  max-width: 48rem;
+  font: 300 16px/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 
 .typo *{
@@ -57,6 +58,12 @@ html[class='dark'] .typo a {
   font-size: 1em;
 }
 
+/* 去掉各Table cell 的边距并让其边重合 */
+.typo table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 /* 在文章中，应该还原 ul 和 ol 的样式 */
 .typo ul{
   margin-left: 1.3em;
@@ -94,7 +101,7 @@ html[class='dark'] .typo a {
   margin: 1em;
 }
 
-.typo code{
+.typo code:not([class]){
   color: #e91e63;
   word-wrap: break-word;
   font-size: .9em;
@@ -108,12 +115,31 @@ html[class='dark'] .typo a {
   content: none;
 }
 
-.typo pre code {
-  padding: 1em;
-  display: block;
-  overflow: auto;
+.typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption {
+  word-wrap: break-word;
+  word-break: break-all;
   border-width: 1px;
-  color: inherit;
+  padding: 0.5em 1em;
+}
+
+.typo table th {
+  background: #fbfbfb;
+}
+
+html[class='dark'] .typo table th{
+  background: #040404;
+}
+
+.typo table thead th {
+  background: #f1f1f1;
+}
+
+html[class='dark'] .typo table th{
+  background: #0e0e0e;
+}
+
+.typo table caption {
+  border-bottom: none;
 }
 
 .typo nav{
@@ -154,5 +180,6 @@ html[class='dark'] .typo a {
     overflow: auto;
     max-height: none;
     border-left-width: 1px;
+    @apply backdrop-blur bg-white/60 dark:bg-[#121212]/60;
   }
 }

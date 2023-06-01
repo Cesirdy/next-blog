@@ -1,41 +1,44 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import { MDXRemote } from "next-mdx-remote";
 import { useRouter } from 'next/router'
-import ReactMarkdown from 'react-markdown';
-import Toc from '@jsdevtools/rehype-toc';
-import Slug from 'rehype-slug';
+import dynamic from 'next/dynamic';
 
-export default function Content({ children }) {
+const Image = dynamic(() => import('next/image'));
+const Link = dynamic(() => import('next/link'));
+
+
+
+export default function Content({ mdxSource }) {
   const router = useRouter();
-	return (
-    <ReactMarkdown
-      rehypePlugins={[[Slug],[Toc,{headings: ["h1", "h2", "h3"]}]]}
-      components={{
-        img: ({ src, ...props }) => (
-	      <Image
-	        src={require(`/public/img${router.asPath.replace(/#.*/, "")}/${src}`)}
-	        {...props}
-	        placeholder="blur"
-	        blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
-	      />
-	    ),
-        a({ node, children, ...props }){
-          const match = /#/.exec(props.href || '')
-          return !match ? (
-            <Link href={props.href} prefetch={false}
-              target={
-                props.href?.includes("http") ? "_blank" : "_self"
-              }
-            >
-              {children}
-            </Link>
-          ) : (
-            <a {...props}>{children}</a>
-          )
-        }
-      }}
-    >
-      {children}
-    </ReactMarkdown>
-	)
+  const components = {
+    img: ({ src, alt, ...props }) => (
+      <>
+        <Image
+          src={require(`/public/img${router.asPath.replace(/#.*/, "")}/${src}`)}
+          {...props}
+          title={alt}
+          alt={alt}
+          sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1280px) 75vw,
+            50vw"
+        />
+        <span className='text-neutral-500 dark:text-neutral-400 text-right block'>{alt}</span>
+      </>
+    ),
+    a({ node, children, ...props }) {
+      const match = /#/.exec(props.href || '');
+      return !match ? (
+        <Link
+          href={props.href}
+          prefetch={false}
+          target={props.href?.includes("http") ? "_blank" : "_self"}
+        >
+          {children}
+        </Link>
+      ) : (
+        <a {...props}>{children}</a>
+      );
+    },
+  };
+  return <MDXRemote {...mdxSource} components={components}/>;
 }
